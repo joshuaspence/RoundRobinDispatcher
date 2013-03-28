@@ -1,9 +1,9 @@
-##################################################################################################
+################################################################################
 # Makefile for building the program  'hostd'
-#-------------------------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
 # Author:	Joshua Spence
 # SID:		308216350
-#=================================================================================================
+#===============================================================================
 # Targets are:
 #    hostd - create the program  'hostd'.
 #	 sigtrap - create the program 'sigtrap'.
@@ -11,7 +11,7 @@
 #	 debug - create the debug version of 'hostd' with capability to output useful debug information.
 #	 tar - create a tar file containing all files currently in the directory.
 #	 help - display the help file for instructions on how to make this project.
-##################################################################################################
+################################################################################
 
 CC = gcc
 CFLAGS = -W -Wall -std=c99 -pedantic -c
@@ -30,7 +30,7 @@ OBJS = $(FILES:%=$(OBJDIR)/%.o)
 INCS = $(FILES:%=$(INCDIR)/%.h) $(INCDIR)/boolean.h $(INCDIR)/output.h
 SRCS = $(FILES:%=$(SRCDIR)/%.c)
 
-# create the program  'hostd'
+# Create the program  'hostd'
 $(DEST): $(OBJS)
 	@echo "====================================================="
 	@echo "Linking the target $@"
@@ -43,16 +43,16 @@ $(OBJDIR)/%.o: $(SRCDIR)/%.c $(INCDIR)/%.h $(INCDIR)/output.h $(INCDIR)/boolean.
 	@echo "====================================================="
 	@echo "Compiling $<"
 	@echo "====================================================="
-# create OBJDIR if it doesn't exist
+# Create OBJDIR if it doesn't exist
 	@mkdir -p $(OBJDIR)
 	$(CC) $(CFLAGS) $< -o $(OBJDIR)/$*.o
 	@echo "--------------- Compilation finished ----------------"
 	@echo
 
-# the following targets are phony
+# The following targets are phony
 .PHONY: clean help
 
-# remove all object files, temporary files, backup files, striped files, target executable and tar files
+# Remove all object files, temporary files, backup files, striped files, target executable and tar files
 clean:
 	@echo "====================================================="
 	@echo "Cleaning directory."
@@ -61,18 +61,18 @@ clean:
 	@echo "------------------ Clean finished -------------------"
 	@echo
 
-# create a tar file containing all files currently in the directory
+# Create a tar file containing all files currently in the directory
 tar:
 	@echo "====================================================="
 	@echo "Creating tar file."
 	@echo "====================================================="
-# delete existing tar file
+# Delete existing tar file
 	@rm -f $(TAR_FILE)
 	tar cfv $(TAR_FILE) ./*
 	@echo "-------------- Tar creation finished ----------------"
 	@echo
 
-# display the help file for instructions on how to make this project
+# Display the help file for instructions on how to make this project
 help:
 	@echo "=========================================================================================================="
 	@echo "Makefile for building the program  'hostd'"
@@ -98,8 +98,8 @@ help:
 	@echo "    make help            display the help file."
 	@echo "----------------------------------------------------------------------------------------------------------"
 	@echo
-	
-# create the debug version of 'hostd' with capability to output useful debug information
+
+# Create the debug version of 'hostd' with capability to output useful debug information
 debug: CFLAGS += $(CFLAGS_DEBUG)
 debug: $(DEST)
 
@@ -111,12 +111,12 @@ sigtrap: $(OBJDIR)/sigtrap.o
 	$(CC) $(LDFLAGS) $^ -o $@
 	@echo "------------------- Link finished -------------------"
 	@echo
-	
+
 $(OBJDIR)/sigtrap.o: $(SRCDIR)/sigtrap.c
 	@echo "====================================================="
 	@echo "Compiling $<"
 	@echo "====================================================="
-# create OBJDIR if it doesn't exist
+# Create OBJDIR if it doesn't exist
 	@mkdir -p $(OBJDIR)
 	$(CC) -W -Wall -pedantic -c $< -o $*.o
 	@echo "--------------- Compilation finished ----------------"
