@@ -19,10 +19,10 @@ static unsigned int _id = 1; // counter used to track assigned IDs
  * Creates an RAS list, containing the specified number of resources.
  *
  * PARAMETERS
- *     num_printers:    The number of printer resources available.
- *     num_scanners:    The number of scanner resources available.
- *     num_modems:      The number of modem resources available.
- *     num_cds:         The number of CD resources available.
+ *     num_printers: The number of printer resources available.
+ *     num_scanners: The number of scanner resources available.
+ *     num_modems: The number of modem resources available.
+ *     num_cds: The number of CD resources available.
  *
  * RETURN VALUE
  * A pointer to the head of the new RAS list.
@@ -31,12 +31,12 @@ RAS * create_resources(unsigned int num_printers, unsigned int num_scanners, uns
     RAS * head = NULL; // head of newly-created RAS list
     RAS * prev = NULL; // used to keep track of most recent RAS
 
-    // create printer resources
+    // Create printer resources
     for (unsigned int i = 0; i < num_printers; i++) {
         RAS * new_ras = create_null_RAS();
         new_ras->resource = Printer_Resource;
 
-        // set next, prev and head pointers
+        // Set next, prev and head pointers
         new_ras->prev = prev;
         if (prev != NULL) {
             prev->next = new_ras;
@@ -47,7 +47,7 @@ RAS * create_resources(unsigned int num_printers, unsigned int num_scanners, uns
         prev = new_ras;
     }
 
-    // create scanner resources
+    // Create scanner resources
     for (unsigned int i = 0; i < num_scanners; i++) {
         RAS * new_ras = create_null_RAS();
         new_ras->resource = Scanner_Resource;
@@ -63,12 +63,12 @@ RAS * create_resources(unsigned int num_printers, unsigned int num_scanners, uns
         prev = new_ras;
     }
 
-    // create modem resources
+    // Create modem resources
     for (unsigned int i = 0; i < num_modems; i++) {
         RAS * new_ras = create_null_RAS();
         new_ras->resource = Modem_Resource;
 
-        // set next, prev and head pointers
+        // Set next, prev and head pointers
         new_ras->prev = prev;
         if (prev != NULL) {
             prev->next = new_ras;
@@ -79,12 +79,12 @@ RAS * create_resources(unsigned int num_printers, unsigned int num_scanners, uns
         prev = new_ras;
     }
 
-    // create CD resources
+    // Create CD resources
     for (unsigned int i = 0; i < num_cds; i++) {
         RAS *new_ras = create_null_RAS();
         new_ras->resource = CD_Resource;
 
-        // set next, prev and head pointers
+        // Set next, prev and head pointers
         new_ras->prev = prev;
         if (prev != NULL) {
             prev->next = new_ras;
@@ -95,7 +95,7 @@ RAS * create_resources(unsigned int num_printers, unsigned int num_scanners, uns
         prev = new_ras;
     }
 
-    // return the head of the RAS list
+    // Return the head of the RAS list
     return head;
 }
 
@@ -125,7 +125,7 @@ RAS * create_null_RAS(void) {
 * Uses the global variable 'resources' as the head of the RAS list.
 *
 * PARAMETERS
-*     type:             The type of resource requested.
+*     type: The type of resource requested.
 *
 * RETURN VALUE
 * A pointer to the requested RAS. NULL if no such RAS could be found.
@@ -155,8 +155,8 @@ RAS * resource_check(ResourceType type) {
  * Uses the global variable 'resources' as the head of the RAS list.
  *
  * PARAMETERS
- *     type:            The type of resource requested.
- *     pcb:             The process requesting the resource.
+ *     type: The type of resource requested.
+ *     pcb: The process requesting the resource.
  *
  * RETURN VALUE
  * A pointer to the requested RAS. NULL if no such RAS could be found.
@@ -178,7 +178,7 @@ RAS * resource_alloc(ResourceType type, PCB * pcb) {
  * Uses the global variable 'resources' as the head of the RAS list.
  *
  * PARAMETERS
- *     pcb:             The process being freed.
+ *     pcb: The process being freed.
  *
  * RETURN VALUE
  * NULL if the RAS list was freed successfully.
@@ -204,7 +204,7 @@ RAS * resource_free(PCB * pcb) {
  * Prints the list of RASs with their attributes.
  *
  * PARAMETERS
- *     head:            Pointer to the head of the RAS list.
+ *     head: Pointer to the head of the RAS list.
  */
 void print_RAS_list(RAS * head) {
     RAS * r = head; // for iterating through the list

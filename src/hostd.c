@@ -30,8 +30,8 @@ unsigned int clock; // the clock
  * The main function for the host dispatcher.
  *
  * PARAMETERS
- *     argc:            The number of arguments.
- *     argv:            The arguments.
+ *     argc: The number of arguments.
+ *     argv: The arguments.
  *
  * RETURN VALUE
  * An integer representing the exit status of the program. (0 = success)
@@ -102,7 +102,7 @@ int main(int argc, char * argv[]) {
     }
 
     while (input_queue != NULL) {
-        PCB *tmp = dequeue_PCB(&input_queue);
+        PCB * tmp = dequeue_PCB(&input_queue);
         terminate_PCB(&tmp);
         free_PCB(&tmp);
     }
@@ -176,7 +176,7 @@ void tick(void) {
                 // Check if there are any ready queued processes (with an equal or higher priority) on the feedback queues
                 if ((next = next_queued_PCB(active->priority)) != NULL) {
                     // Suspend the active process
-                    PCB *p = suspend_PCB(&active);
+                    PCB * p = suspend_PCB(&active);
                     active = NULL;
                     p = lower_priority(&p);
 
@@ -388,8 +388,7 @@ void unload_pending_user_processes(void) {
  * resources than the system can provide.
  *
  * PARAMETERS
- *     PCB:             Pointer to the process for which to allocate memory and
- *                      resources.
+ *     PCB: Pointer to the process for which to allocate memory and resources.
  *
  * RETURN VALUE
  * A boolean value indicating that the system is able to provide (however, not
@@ -434,8 +433,7 @@ boolean check_memory_and_resources(PCB * pcb) {
  * resources than the system can provide.
  *
  * PARAMETERS
- *     PCB:             Pointer to the process for which to allocate memory and
- *                      resources.
+ *     PCB: Pointer to the process for which to allocate memory and resources.
  *
  * RETURN VALUE
  * A boolean value indicating whether the memory and resources were successfully
@@ -533,8 +531,8 @@ boolean allocate_memory_and_resources(PCB * pcb) {
  * feedback queues.
  *
  * PARAMETERS
- *     min_priority:    The PCB returned must have a priority greater than
- *                      (numerically less than) or equal to this priority.
+ *     min_priority: The PCB returned must have a priority greater than
+ *         (numerically less than) or equal to this priority.
  *
  * RETURN VALUE
  * The next PCB with the highest priority (and a priority at least equal to

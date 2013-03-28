@@ -42,7 +42,7 @@ MAB * create_null_MAB(void) {
  * Uses the global variable 'memory' as the head of the MAB list.
  *
  * PARAMETERS
- *     size:            The size of the MAB being requested.
+ *     size: The size of the MAB being requested.
  *
  * RETURN VALUE
  * A pointer to the requested MAB. NULL if no such MAB could be found.
@@ -72,7 +72,7 @@ MAB * mem_check(unsigned int size) {
  * Uses the global variable 'memory' as the head of the MAB list.
  *
  * PARAMETERS
- *     size:            The size of the MAB being requested.
+ *     size: The size of the MAB being requested.
  *
  * RETURN VALUE
  * A pointer to the requested MAB. NULL if no such MAB could be found.
@@ -95,7 +95,7 @@ MAB * mem_alloc(unsigned int size) {
  * Frees a MAB.
  *
  * PARAMETERS
- *     mab:             Pointer to the MAB to be freed.
+ *     mab: Pointer to the MAB to be freed.
  *
  * RETURN VALUE
  * NULL if the MAB was freed successfully.
@@ -122,7 +122,7 @@ MAB * mem_free(MAB * mab) {
  * Merge the specified MAB with the next MAB in the list, if appropriate.
  *
  * PARAMETERS
- *     mab:             Pointer to the MAB to be merged.
+ *     mab: Pointer to the MAB to be merged.
  *
  * RETURN VALUE
  * A pointer to the merge MAB. If no merge occurred, returns a pointer to the
@@ -160,8 +160,8 @@ MAB * mem_merge(MAB * mab) {
  * size (mab->size - size).
  *
  * PARAMETERS
- *     mab:             Pointer to the MAB to split.
- *     size:            The requested size.
+ *     mab: Pointer to the MAB to split.
+ *     size: The requested size.
  *
  * RETURN VALUE
  * Returns a value to the first of the split MAB elements (the MAB with size
@@ -197,7 +197,7 @@ MAB * mem_split(MAB * mab, unsigned int size) {
  * Prints the list of MABs with their attributes.
  *
  * PARAMETERS
- *     head:            The head of the list.
+ *     head: The head of the list.
  */
 void print_MAB_list(MAB * head) {
     MAB * m = head; // for iterating through the list
@@ -232,7 +232,7 @@ void print_MAB_list(MAB * head) {
  * Prints a detailed description of a MAB.
  *
  * PARAMETERS
- *     mab:             The mab to print.
+ *     mab: The mab to print.
  */
 void print_MAB(MAB * mab) {
     fprintf(__DEBUG_OUTPUT, "MAB %d: {\n", mab->id);

@@ -55,8 +55,8 @@ PCB * create_null_PCB(void) {
  * the underlying pointer can be changed by this function.
  *
  * PARAMETERS
- *     head:            Pointer to the head of the queue.
- *     pcb:             Pointer to the PCB to add to the queue.
+ *     head: Pointer to the head of the queue.
+ *     pcb: Pointer to the PCB to add to the queue.
  *
  * RETURN VALUE
  * A pointer to the head of the queue.
@@ -98,7 +98,7 @@ PCB * enqueue_PCB(PCB ** head, PCB ** pcb) {
  * the underlying pointer can be changed by this function.
  *
  * PARAMETERS
- *     head:            Pointer to the head queue element to be removed.
+ *     head: Pointer to the head queue element to be removed.
  *
  * RETURN VALUE
  * A pointer to the removed element of the queue.
@@ -140,7 +140,7 @@ PCB * dequeue_PCB(PCB ** head) {
  * the underlying pointer can be changed by this function.
  *
  * PARAMETERS
- *     pcb:             Pointer to the PCB to alter.
+ *     pcb: Pointer to the PCB to alter.
  *
  * RETURN VALUE
  * A pointer to the same process, unless this process was terminated in which
@@ -150,7 +150,7 @@ PCB * decrement_remaining_cpu_time(PCB ** pcb) {
     if (*pcb != NULL) {
         // Decrement the remaining CPU time for the process and check whether the process has any remaining CPU time
         if ((--((*pcb)->remaining_cpu_time)) <= 0) {
-        // Time's up - terminate process
+            // Time's up - terminate process
             *pcb = terminate_PCB(pcb);
 
             // Free memory associated with the PCB
@@ -166,7 +166,7 @@ PCB * decrement_remaining_cpu_time(PCB ** pcb) {
 }
 
 /*
- *Lower the priority of a process. If the priority of the process is already at
+ * Lower the priority of a process. If the priority of the process is already at
  * (or lower than) the value defined as LOWEST_PRIORITY, then the priority is
  * set to LOWEST_PRIORITY.
  *
@@ -174,7 +174,7 @@ PCB * decrement_remaining_cpu_time(PCB ** pcb) {
  * the underlying pointer can be changed by this function.
  *
  * PARAMETERS
- *     pcb:             Pointer to the PCB to alter.
+ *     pcb: Pointer to the PCB to alter.
  *
  * RETURN VALUE
  * A pointer to the same process.
@@ -197,7 +197,7 @@ PCB * lower_priority(PCB ** pcb) {
  * the underlying pointer can be changed by this function.
  *
  * PARAMETERS
- *     pcb:             Pointer to the PCB to start.
+ *     pcb: Pointer to the PCB to start.
  *
  * RETURN VALUE
  * A pointer to the same process, or NULL if starting the process failed.
@@ -238,7 +238,7 @@ PCB * start_PCB(PCB ** pcb) {
  * the underlying pointer can be changed by this function.
  *
  * PARAMETERS
- *     pcb:             Pointer to the PCB to suspend.
+ *     pcb: Pointer to the PCB to suspend.
  *
  * RETURN VALUE
  * A pointer to the same process, or NULL if  suspending the process failed.
@@ -268,7 +268,7 @@ PCB * suspend_PCB(PCB ** pcb) {
  * the underlying pointer can be changed by this function.
  *
  * PARAMETERS
- *     pcb:             Pointer to the PCB to restart.
+ *     pcb: Pointer to the PCB to restart.
  *
  * RETURN VALUE
  * A pointer to the same process, or NULL if restarting the process failed.
@@ -293,7 +293,7 @@ PCB * restart_PCB(PCB ** pcb) {
  * the underlying pointer can be changed by this function.
  *
  * PARAMETERD
- *     pcb:             Pointer to the PCB to restart.
+ *     pcb: Pointer to the PCB to restart.
  *
  * RETURN VALUE
  * A pointer to the same process, or NULL if terminating the process failed.
@@ -304,7 +304,7 @@ PCB * terminate_PCB(PCB ** pcb) {
 #ifdef DEBUG
     fprintf(__DEBUG_OUTPUT, "Terminating PCB %d (PID: %d). Remaining CPU time: %d\n", (*pcb)->id, (int) (*pcb)->pid, (*pcb)->remaining_cpu_time);
 #endif // #ifdef DEBUG
-    /* Send the kill signal */
+    // Send the kill signal
     if (kill((*pcb)->pid, SIGINT)) {
         fprintf(__ERROR_OUTPUT, "Termination of PCB %d (PID: %d) failed.\n", (*pcb)->id, (int) (*pcb)->pid);
         return NULL;
@@ -335,7 +335,7 @@ PCB * terminate_PCB(PCB ** pcb) {
  * the underlying pointer can be changed by this function.
  *
  * PARAMETERS
- *     pcb:             Pointer to the PCB to free.
+ *     pcb: Pointer to the PCB to free.
  */
 void free_PCB(PCB ** pcb) {
     if (*pcb) {
@@ -364,7 +364,7 @@ void free_PCB(PCB ** pcb) {
  * Prints the queue of PCBs starting at the specified head.
  *
  * PARAMETERS
- *     head:            The head of the queue to be printed.
+ *     head: The head of the queue to be printed.
  */
 void print_PCB_queue(PCB * head) {
     PCB * p = head; // to loop through the queue
@@ -392,7 +392,7 @@ void print_PCB_queue(PCB * head) {
  * Prints a detailed description of a single PCB.
  *
  * PARAMETERS
- *     pcb:             The PCB to be printed.
+ *     pcb: The PCB to be printed.
  */
 void print_PCB(PCB * pcb) {
     fprintf(__DEBUG_OUTPUT, "PCB %d: {\n", pcb->id);

@@ -19,7 +19,7 @@
  * Parse an input CSV file, creating a queue of PCBs.
  *
  * PARAMETERS
- *     file:            The input file to parse.
+ *     file: The input file to parse.
  *
  * RETURN VALUE
  * A pointer to the head of the input queue.
