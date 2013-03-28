@@ -93,7 +93,7 @@ char * colours [] = { BLACK ON_WHITE, CYAN ON_RED, GREEN ON_MAGENTA,
 char * colour;                        // choice of colour for this process
 
 static int signal_SIGINT = FALSE;     // flags set by signal handler
-static int signal_SIGQUIT = FALSE;    // (all response done in main process  
+static int signal_SIGQUIT = FALSE;    // (all response done in main process
 static int signal_SIGHUP = FALSE;     //  rather than in interrupt routine)
 static int signal_SIGTERM = FALSE;
 static int signal_SIGABRT = FALSE;
@@ -105,7 +105,7 @@ int main(int argc, char *argv[])
 {
     FILE * output = DEFAULT_OP;
     pid_t pid = getpid();             // get process id
-    int i, cycle, rc;   
+    int i, cycle, rc;
     long clktck = sysconf(_SC_CLK_TCK);
     struct tms t;
     clock_t starttick, stoptick;
@@ -117,11 +117,11 @@ int main(int argc, char *argv[])
         PrintUsage(argv[0]);
 
     fprintf(output,"%s%7d; START" BLACK NORMAL "\n", colour, (int) pid);
-    fflush(output);  
+    fflush(output);
 
     signal (SIGINT, SignalHandler);   // hook up signal handler
     signal (SIGQUIT, SignalHandler);
-    signal (SIGHUP, SignalHandler);   
+    signal (SIGHUP, SignalHandler);
     signal (SIGTERM, SignalHandler);
     signal (SIGABRT, SignalHandler);
 //  signal (SIGCONT, SignalHandler);  // do this intrinsically after return from SIGTSTP
@@ -131,7 +131,7 @@ int main(int argc, char *argv[])
 
     rc = setpriority(PRIO_PROCESS, 0, 20); // be nice, lower priority by 20
     cycle = argc < 2 ? DEFAULT_TIME : atoi(argv[1]);  // get tick count
-    
+
     if (cycle <= 0) cycle = 1;
 
     for (i = 0; i < cycle;) {          // tick
@@ -139,7 +139,7 @@ int main(int argc, char *argv[])
             signal_SIGCONT = FALSE;
             fprintf(output,"%s%7d; SIGCONT" BLACK NORMAL "\n", colour, (int) pid);
             fflush(output);
-        }  
+        }
 
         starttick = times (&t);        // use timer to ascertain whether 'tick' should be
         rc = sleep(1);                 //  reported
@@ -186,22 +186,22 @@ int main(int argc, char *argv[])
         if (signal_SIGTERM) {
             fprintf(output,"%s%7d; SIGTERM" BLACK NORMAL "\n", colour, (int) pid);
             exit(0);
-        }               
-        
+        }
+
         fflush(output);
 
     }
 
     exit(0);
 }
- 
+
 
 /******************************************************************
 
   static void SignalHandler(int sig)
 
   trap and report the following signals:
-  
+
     SIGINT, SIGQUIT, SIGHUP, SIGTERM, SIGABRT, SIGCONT, SIGTSTP
 
   program can not trap SIGSTOP or SIGKILL .
@@ -211,7 +211,7 @@ int main(int argc, char *argv[])
  *******************************************************************/
 
 static void SignalHandler(int sig)        // trap signals from shell/system
-{  
+{
     switch (sig) {
         case SIGINT:
             signal_SIGINT = TRUE;
@@ -251,7 +251,7 @@ static void SignalHandler(int sig)        // trap signals from shell/system
   print program usage
 
   pgmName - program name
-            if NULL defaults to DEFAULT_NAME     
+            if NULL defaults to DEFAULT_NAME
 
  *******************************************************************/
 
