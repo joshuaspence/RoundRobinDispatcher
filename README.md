@@ -3,15 +3,16 @@ RoundRobinDispatcher
 
 Introduction
 ------------
-A round robin dispatcher written in C for the unit of study COMP3520 (Operating
-System Internals) at the University of Sydney.
+A round robin dispatcher written in C for the unit of study
+[COMP3520 (Operating System Internals)][comp3520] at the
+[University of Sydney][usyd].
 
 License
 -------
-The MIT License is simple and easy to understand and it places almost no
-restrictions on what you can do with a jQuery project.
+Released under the [MIT License][mit]. See [LICENSE.md](LICENSE.md) for more
+details.
 
-You are free to use a jQuery project in commercial projects as long as the
-copyright header is left intact.
 
-See [LICENSE.md](LICENSE.md) for more details.
+[comp3520]: <http://sydney.edu.au/courses/uos/COMP3520/operating-systems-internals>
+[mit]: <http://opensource.org/licenses/MIT>
+[usyd]: <http://sydney.edu.au>
