@@ -1,0 +1,17 @@
+{
+	"folders":
+	[
+		{
+			"path": ".",
+            "folder_exclude_patterns":
+            [
+                "obj"
+            ],
+            "file_exclude_patterns":
+            [
+                "hostd",
+                "*.pdf"
+            ]
+		}
+	]
+}
